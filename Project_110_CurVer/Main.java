@@ -3,6 +3,13 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        //tempZone
+        Character jason = new Character();
+        int tempVal = jason.getSpeed();
+        System.out.println(tempVal);
+        jason.printStats();
+        //endTempZone
+
         Scanner in = new Scanner(System.in);
         Random randGen = new Random();
 
