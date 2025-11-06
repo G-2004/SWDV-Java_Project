@@ -14,7 +14,7 @@ public class Character {
 
         //set character details automatically--------------------------------------------------------------------------------
         public Character(){
-                name = "null";
+                name = "nullbert";
                 hp = 1;
                 bonus = 2;
                 spd = 3;
@@ -36,6 +36,7 @@ public class Character {
                 mp = 4;
         }
         public void setStats(String name,int hp, int bonus, int spd, int mp){
+                //exists just so you can put in the above details
         }
         public void setMoves(){
                 move1 = "slash";
@@ -43,8 +44,12 @@ public class Character {
                 move3 = "slash";
                 move4 = "slash";
         }
+        public void setMoves(String move1,String move2,String move3,String move4){
+                //exists just so you can put in the above details
+        }
         //Print character details--------------------------------------------------------------------------------------------
         public void printStats(){
+                System.out.println("Stats:");
                 System.out.println(name);
                 System.out.println(hp);
                 System.out.println(bonus);
@@ -52,6 +57,21 @@ public class Character {
                 System.out.println(mp);
         }
         public void printMoves(){
+                System.out.println("Moves:");
+                System.out.println(move1);
+                System.out.println(move2);
+                System.out.println(move3);
+                System.out.println(move4);
+        }
+        public void printAll(){
+                System.out.println("Stats:");
+                System.out.println(name);
+                System.out.println(hp);
+                System.out.println(bonus);
+                System.out.println(spd);
+                System.out.println(mp);
+                System.out.println("");
+                System.out.println("Moves:");
                 System.out.println(move1);
                 System.out.println(move2);
                 System.out.println(move3);
@@ -72,5 +92,19 @@ public class Character {
         }
         public int getMp(){
                 return mp;
+        }
+        public String getMove(int slot){
+                if(slot == 1){
+                        return move1;
+                }
+                else if(slot == 2){
+                        return move2;
+                }
+                else if(slot == 3){
+                        return move3;
+                }
+                else{
+                        return move4;
+                }
         }
 }

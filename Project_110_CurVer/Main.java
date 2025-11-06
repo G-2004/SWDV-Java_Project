@@ -7,7 +7,7 @@ public class Main {
         Character jason = new Character();
         int tempVal = jason.getSpeed();
         System.out.println(tempVal);
-        jason.printStats();
+        jason.printAll();
         //endTempZone
 
         Scanner in = new Scanner(System.in);
