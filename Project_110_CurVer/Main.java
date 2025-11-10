@@ -1,14 +1,11 @@
 import java.util.Scanner;
 import java.util.Random;
+import Combat.Character;
+import Story_paths.pathA;
+import Story_paths.pathB;
 
 public class Main {
     public static void main(String[] args) {
-        //tempZone
-        Character jason = new Character();
-        int tempVal = jason.getSpeed();
-        System.out.println(tempVal);
-        jason.printAll();
-        //endTempZone
 
         Scanner in = new Scanner(System.in);
         Random randGen = new Random();
@@ -175,6 +172,7 @@ public class Main {
                 String move3 = "Heal";
                 String move4 = "wait";
                 int p1Move = 1;
+                
         //############################################
         if (proWep == 1){ //implementation of more advanced if-else statemnt
                 hp = 40;
@@ -206,6 +204,9 @@ public class Main {
                 move1 = "Attack";
                 move2 = "Defensive Trap";
         }
+
+        Character playerCharacter = new Character(name, maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);//currently unused. will rewrite combat code next time.
+        Character partnerA = new Character(partnerName, maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
 
         String moveDT = "Defensive Trap";
         String moveSS = "Summon Sandstorm"; //I believe this is actually irrelevent in current code but my head is so fogged I'm not removing it yet
@@ -257,24 +258,30 @@ public class Main {
         System.out.println("2: Continue on the path");
         int selection = in.nextInt(); //allows player to decide which path to take leading to a new party member that changes depening on where they go.
         if(selection == 1){
-                System.out.println("The two head to town. While at the local farmers market they overhear a gruff voice arguing");
+                System.out.println("The two head to town. While at the local market they overhear a gruff voice arguing");
                 System.out.println("with a blacksmith.");
                 party = addParty(partyBernard, party);
                 System.out.println("gained party member: Bernard");
+                Character partnerB = new Character("Bernard", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
+                pathA currPathA = new pathA();
+                currPathA.playPathA(playerCharacter, partnerA, partnerB);
         }
         else if(selection == 2){
                 System.out.println("The two continue on the path until they run into a girl crouched down with a crossbow.");
                 party = addParty(partySyldeva, party, 0);
+                Character partnerB = new Character("Syldeva", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
                 System.out.println("gained party member: Syldeva");
+
         }
 
-        party = checkParty(party);
+        /* party = checkParty(party);
         for (int i=0; i < party.length; i++){
         System.out.print(party[i] + ", ");
         }
         System.out.println("");
 
-        System.out.println("End Final Project.");
+        System.out.println("End Final Project."); */
+        System.out.println("you should not see this until the end of the game.");
     }
 
     //#####################################################################################################################

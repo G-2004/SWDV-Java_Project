@@ -1,9 +1,11 @@
 ##########################################################################
-The program is built to run on java in vs code. To open the project use the run java arrow in the top right. (addon required)
-This has also been tested on Jdoodle.
-Follow prompts carefully as writing words where numbers are needed can and will cause crashes.
+-The program is built to run on java in vs code. To open the project use the run java arrow in the top right. (addon required)
+-Open the project folder (The one containing main.java) by right clicking on the folder. If you are on windows click show more options then click open with code. once the workspace opens click on main.java and click the run arrow which should be near the top right of the file.
 
-For professor: I assume you are aware but since the code will be shifting as I learn the keyboard shortcut ctrl + f allows you to find chosen words in a document
+-You must trust the program for the arrow to show up.
+-You can close the build with AI window if it pops up to provide you more space to see the code and console.
+
+-For professor: I assume you are aware but since the code will be shifting as I learn the keyboard shortcut ctrl + f allows you to find chosen words in a document
 and so looking for method names and statement types can be done with that.
 
 ##########################################################################
@@ -55,6 +57,7 @@ Lines 260 - 262 enhanced for loop implementation, Used to print out move list
 I apologize the choice doesn't mean a lot. I'm very mentally drained and part of me doesn't want to write everything from here on within an if statement and would like to learn a better way to implement significant meaningful choices.
 ##########################################################################
 FINAL PROJECT
+xx/xx/2025 forgot date. my bad.
 
 I am counting the combat method from project 3 as one of my 4 methods
 
@@ -62,6 +65,21 @@ Added a checkParty method that "works with an array" as required
 made addParty method that looks for an empty party slot to add a new party member. uses the "two parameters" needed. Also I believe falls into "input handling method". It is also overloaded now.
 
 The overloaded method is called when adding Syldeva or bernard. each one seperately calls a different variation of addParty
+##########################################################################
+SWDV 110
+Project 1
+11/8/2025
+
+Added character class containing stats and moves as well as functions to pull those from each instance of the object.
+
+11/9/2025
+Added allegiance to character class. 
+
+Added imports and packages so files can "speak" with one another.
+
+Started writing the story for path A. while incomplete it's a fine base that finally establishes the goal.
+Path B is still empty.(and has no trigger).
+
 ##########################################################################
 FUTURE PLANS
 
