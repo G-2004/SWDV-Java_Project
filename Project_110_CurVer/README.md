@@ -80,8 +80,14 @@ Added imports and packages so files can "speak" with one another.
 Started writing the story for path A. while incomplete it's a fine base that finally establishes the goal.
 Path B is still empty.(and has no trigger).
 
+//Comment - I underestimated the size of this assignment and underperformed. Get ahead on work next week me!
+
 ##########################################################################
 FUTURE PLANS
+
+Rewrite combat, add shops, add a convoy inventory, rewrite party ordering code.
+
+Add a dog. Let dog be pet.
 
 Give Syldeva and Bernard Stats
 
