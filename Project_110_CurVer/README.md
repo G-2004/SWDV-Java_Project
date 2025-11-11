@@ -110,6 +110,18 @@ Added add to end for characterNode
 Added print Party for character node printing all in the linked list
 
 Combat now prints both teams members
+
+Nodes now know the previous node that references them in the linked list so long as addAfter() method is run
+or setPrevNode is run with head node as the input (Still need to add a head node.)
+
+FP:
+Make party sorting available to the player.
+
+Combat needs to read the speed of each of up to 8 nodes(first 4 player and first 4 monster both ignoring head nodes) and then list each node by highest speed to lowest speed. needs to know how to skip null nodes.
+
+add a way to read hp total of each side. 
+
+give character a full heal method.
 ##########################################################################
 FUTURE PLANS
 

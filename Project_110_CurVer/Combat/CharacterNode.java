@@ -17,6 +17,8 @@ public class CharacterNode {
         private String move3;
         private String move4;
 
+        private CharacterNode prevNode;
+
         //set CharacterNode details automatically--------------------------------------------------------------------------------
         public CharacterNode(){
                 this.name = "nullbert";
@@ -153,6 +155,35 @@ public class CharacterNode {
                         CharacterNode tmpNext = this.getNext();
                         tmpNext.printParty();
                 }
+        }
+        public void addAfter(CharacterNode afterMe, CharacterNode headNode){
+                CharacterNode afterOldNext = afterMe.getNext();
+                CharacterNode selfOldNext = this.getNext();
+                if(afterOldNext == null){
+                        CharacterNode Temp = headNode.getNext();
+                        Temp.setPrevNode(headNode);
+                        prevNode.setNext(selfOldNext);
+                        afterMe.setNext(this);
+                        this.setNext(null);
+                        Temp = headNode.getNext();
+                        Temp.setPrevNode(headNode);
+                }
+                else{
+                afterMe.setNext(this);
+                this.setNext(afterOldNext);
+                this.setLast(selfOldNext);
+                }
+        }
+        public void setPrevNode(CharacterNode inputNode){
+                this.prevNode = inputNode;
+                if(this.getNext() != null){
+                CharacterNode temp = this.getNext();
+                temp.setPrevNode(this);
+                }
+        }
+
+        public CharacterNode getPrevNode(){
+                return this.prevNode;
         }
         
 }
