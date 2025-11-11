@@ -83,6 +83,25 @@ Path B is still empty.(and has no trigger).
 //Comment - I underestimated the size of this assignment and underperformed. Get ahead on work next week me!
 
 ##########################################################################
+Free Time
+11/10/2025
+
+added combat class.
+
+combat class currently prints all the stats of each character in the party so long as they are the next node.
+and also you only have a party of 3.
+
+Added ability to set next node for a character and the ability to return a reference to that node.
+
+FP:
+Likely tie all party members to party leader and monsters to a monster party leader.
+
+add a way to deal damage
+
+Create a sorting system using the speed stat.
+
+New party sorting system DO THIS FIRST PROBABLY!!!!!
+##########################################################################
 FUTURE PLANS
 
 Rewrite combat, add shops, add a convoy inventory, rewrite party ordering code.

@@ -1,6 +1,7 @@
 package Story_paths;
 import java.util.Scanner;
 import Combat.Character;
+import Combat.Combat;
 
 public class pathA {
     public void playPathA(Character playerChar, Character partnerA, Character partnerB){
@@ -10,6 +11,11 @@ public class pathA {
             
             String nameC = partnerB.getName();
             String name = playerChar.getName();
+
+            playerChar.setNext(partnerA);//REMOVE THIS
+            partnerA.setNext(partnerB);//REMOVE THIS
+            Combat currCombat = new Combat();//REMOVE THIS
+            currCombat.CombatSort(playerChar);//REMOVE THIS
 
             System.out.println("blacksmith: " + nameC + "! How many times do I have to explain this to you!");
             System.out.println("I can not forge you a blade made of dead bees and rocks you found on");

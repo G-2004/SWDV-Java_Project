@@ -2,7 +2,8 @@ package Combat;
 
 public class Character {
 
-        //I think this is how I'm
+        //private variables
+        private Character nextNode;
         private String name;
         private int hp;
         private int maxHp;
@@ -53,7 +54,7 @@ public class Character {
                 this.allegiance = 0;
         }
         public void setStats(String name,int hp, int maxHp, double bonus, int spd, int mp, int allegiance){
-                //exists just so you can put in the above details
+                //exists just so you can put in the above details //fix this. this is not how this works.
         }
         public void setMoves(){
                 this.move1 = "slash";
@@ -62,7 +63,7 @@ public class Character {
                 this.move4 = "slash";
         }
         public void setMoves(String move1,String move2,String move3,String move4){
-                //exists just so you can put in the above details
+                //exists just so you can put in the above details //fix this. this is not how this works.
         }
         //Print character details--------------------------------------------------------------------------------------------
         public void printStats(){
@@ -130,4 +131,12 @@ public class Character {
         public int getAllegiance(){
                 return allegiance;
         }
+        //used for ordering------------------------------------------------------------------------------------------------------
+        public void setNext(Character nextLoc) {
+                this.nextNode = nextLoc;
+        }
+        public Character getNext() {
+                return this.nextNode;
+        }
+        
 }
