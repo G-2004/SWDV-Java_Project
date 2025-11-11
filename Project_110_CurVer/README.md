@@ -101,6 +101,15 @@ add a way to deal damage
 Create a sorting system using the speed stat.
 
 New party sorting system DO THIS FIRST PROBABLY!!!!!
+
+11/11/2025
+
+Renamed character class to characterNode class to prevent overlap with reserved words.
+
+Added add to end for characterNode
+Added print Party for character node printing all in the linked list
+
+Combat now prints both teams members
 ##########################################################################
 FUTURE PLANS
 

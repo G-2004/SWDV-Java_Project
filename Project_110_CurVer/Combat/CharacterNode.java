@@ -1,9 +1,9 @@
 package Combat;
 
-public class Character {
+public class CharacterNode {
 
         //private variables
-        private Character nextNode;
+        private CharacterNode nextNode;
         private String name;
         private int hp;
         private int maxHp;
@@ -17,8 +17,8 @@ public class Character {
         private String move3;
         private String move4;
 
-        //set character details automatically--------------------------------------------------------------------------------
-        public Character(){
+        //set CharacterNode details automatically--------------------------------------------------------------------------------
+        public CharacterNode(){
                 this.name = "nullbert";
                 this.hp = 1;
                 this.maxHp = 1;
@@ -31,7 +31,7 @@ public class Character {
                 this.move4 = "slash";
                 this.allegiance = 0;
         }
-        public Character(String name,int hp,int maxHp, double bonus, int spd, int mp, String move1, String move2, String move3, String move4, int allegiance){
+        public CharacterNode(String name,int hp,int maxHp, double bonus, int spd, int mp, String move1, String move2, String move3, String move4, int allegiance){
                 this.name = name;
                 this.hp = hp;
                 this.maxHp = maxHp;
@@ -44,7 +44,7 @@ public class Character {
                 this.move4 = move4;
                 this.allegiance = allegiance;
         }
-        //set character details manually-------------------------------------------------------------------------------------
+        //set CharacterNode details manually-------------------------------------------------------------------------------------
         public void setStats(){
                 this.name = "null";
                 this.hp = 1;
@@ -65,7 +65,7 @@ public class Character {
         public void setMoves(String move1,String move2,String move3,String move4){
                 //exists just so you can put in the above details //fix this. this is not how this works.
         }
-        //Print character details--------------------------------------------------------------------------------------------
+        //Print CharacterNode details--------------------------------------------------------------------------------------------
         public void printStats(){
                 System.out.println("Stats:");
                 System.out.println(name);
@@ -132,11 +132,27 @@ public class Character {
                 return allegiance;
         }
         //used for ordering------------------------------------------------------------------------------------------------------
-        public void setNext(Character nextLoc) {
+        public void setLast(CharacterNode lastLoc){
+                if (nextNode != null) {
+                        CharacterNode tmpNext = this.getNext();
+                        tmpNext.setLast(lastLoc);
+                }
+                else{
+                        this.setNext(lastLoc);
+                }
+        }
+        public void setNext(CharacterNode nextLoc) {
                 this.nextNode = nextLoc;
         }
-        public Character getNext() {
+        public CharacterNode getNext() {
                 return this.nextNode;
+        }
+        public void printParty(){
+                System.out.println(this.name);
+                if (nextNode != null){
+                        CharacterNode tmpNext = this.getNext();
+                        tmpNext.printParty();
+                }
         }
         
 }

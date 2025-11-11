@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
-import Combat.Character;
+import Combat.CharacterNode;
 import Story_paths.pathA;
 import Story_paths.pathB;
 
@@ -205,8 +205,8 @@ public class Main {
                 move2 = "Defensive Trap";
         }
 
-        Character playerCharacter = new Character(name, maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);//currently unused. will rewrite combat code next time.
-        Character partnerA = new Character(partnerName, maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
+        CharacterNode playerCharacter = new CharacterNode(name, maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);//currently unused. will rewrite combat code next time.
+        CharacterNode partnerA = new CharacterNode(partnerName, maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
 
         String moveDT = "Defensive Trap";
         String moveSS = "Summon Sandstorm"; //I believe this is actually irrelevent in current code but my head is so fogged I'm not removing it yet
@@ -262,14 +262,14 @@ public class Main {
                 System.out.println("with a blacksmith.");
                 party = addParty(partyBernard, party);
                 System.out.println("gained party member: Bernard");
-                Character partnerB = new Character("Bernard", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
+                CharacterNode partnerB = new CharacterNode("Bernard", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
                 pathA currPathA = new pathA();
                 currPathA.playPathA(playerCharacter, partnerA, partnerB);
         }
         else if(selection == 2){
                 System.out.println("The two continue on the path until they run into a girl crouched down with a crossbow.");
                 party = addParty(partySyldeva, party, 0);
-                Character partnerB = new Character("Syldeva", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
+                CharacterNode partnerB = new CharacterNode("Syldeva", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
                 System.out.println("gained party member: Syldeva");
 
         }
