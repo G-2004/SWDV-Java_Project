@@ -156,29 +156,23 @@ public class CharacterNode {
                         tmpNext.printParty();
                 }
         }
-        public void addAfter(CharacterNode afterMe, CharacterNode headNode){
-                CharacterNode afterOldNext = afterMe.getNext();
-                CharacterNode selfOldNext = this.getNext();
-                if(afterOldNext == null){
-                        CharacterNode Temp = headNode.getNext();
-                        Temp.setPrevNode(headNode);
-                        prevNode.setNext(selfOldNext);
-                        afterMe.setNext(this);
-                        this.setNext(null);
-                        Temp = headNode.getNext();
-                        Temp.setPrevNode(headNode);
-                }
-                else{
+        public void addAfter(CharacterNode afterMe, CharacterNode headNode){//NEVER allow head node to be the one being moved
+                CharacterNode Temp = headNode.getNext();
+                Temp.setPrevNodes(headNode); //starting from head node find each nodes previous node
+                CharacterNode afterMoving = this.getNext(); //node after this
+                CharacterNode beforeMoving = this.getPrevNode(); //node before this
+                CharacterNode afterAfter = afterMe.getNext();//node after afterMe
+                beforeMoving.setNext(afterMoving);//old prev point old next
+                this.setNext(afterAfter);//point where afterMe used to point.
                 afterMe.setNext(this);
-                this.setNext(afterOldNext);
-                this.setLast(selfOldNext);
-                }
+                Temp = headNode.getNext();
+                Temp.setPrevNodes(headNode); //refresh the prevNode list just in case
         }
-        public void setPrevNode(CharacterNode inputNode){
+        public void setPrevNodes(CharacterNode inputNode){
                 this.prevNode = inputNode;
                 if(this.getNext() != null){
                 CharacterNode temp = this.getNext();
-                temp.setPrevNode(this);
+                temp.setPrevNodes(this);
                 }
         }
 

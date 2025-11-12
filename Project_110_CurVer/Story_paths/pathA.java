@@ -12,10 +12,16 @@ public class pathA {
             String nameC = partnerB.getName();
             String name = playerChar.getName();
 
+            CharacterNode playerHead = new CharacterNode();
+            playerHead.setNext(playerChar);
             playerChar.setLast(partnerA);//REMOVE THIS
             playerChar.setLast(partnerB);//REMOVE THIS
             Combat currCombat = new Combat();//REMOVE THIS
-            currCombat.CombatSort(playerChar, playerChar);//REMOVE THIS
+            currCombat.CombatSort(playerHead, playerHead);//REMOVE THIS
+            in.nextLine();
+            partnerB.addAfter(playerChar, playerHead);
+            currCombat.CombatSort(playerHead, playerHead);//REMOVE THIS
+            
 
             System.out.println("blacksmith: " + nameC + "! How many times do I have to explain this to you!");
             System.out.println("I can not forge you a blade made of dead bees and rocks you found on");

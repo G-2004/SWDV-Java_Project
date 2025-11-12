@@ -9,13 +9,15 @@
 and so looking for method names and statement types can be done with that.
 
 ##########################################################################
-PROJECT 1
+**PROJECT 1
+*NO DATE
 
 Lines 1 - 143 were all written in project 1.
 This section mainly consists of allowing user to input custom values and names.
 This also sets up the basic stories characters and locations.
 ##########################################################################
-PROJECT 2
+**PROJECT 2
+*NO DATE
 
 Multiple new if else statements on lines:
 168 - 197 else if
@@ -33,8 +35,8 @@ New For loop:
 
 This addition is almost entirely one combat scenario allowing user to pick weapon and thus moveset.
 ##########################################################################
-PROJECT 3
-10/3/2025
+**PROJECT 3
+*10/3/2025
 
 Corrected spelling error on line 80
 
@@ -44,7 +46,7 @@ Changed the way combat code works by allowing moves to be placed in any slot and
 Added second win/loss check before enemy attack in order to prevent taking damage after enemy has already died.
 Altered documentation related to move choice as it was the primary factor altered
 
-10/5/2025
+*10/5/2025
 234 - 267 Started working on camp code
 
 Required
@@ -56,8 +58,8 @@ Lines 260 - 262 enhanced for loop implementation, Used to print out move list
 
 I apologize the choice doesn't mean a lot. I'm very mentally drained and part of me doesn't want to write everything from here on within an if statement and would like to learn a better way to implement significant meaningful choices.
 ##########################################################################
-FINAL PROJECT
-xx/xx/2025 forgot date. my bad.
+**FINAL PROJECT
+*xx/xx/2025 forgot date. my bad.
 
 I am counting the combat method from project 3 as one of my 4 methods
 
@@ -67,12 +69,12 @@ made addParty method that looks for an empty party slot to add a new party membe
 The overloaded method is called when adding Syldeva or bernard. each one seperately calls a different variation of addParty
 ##########################################################################
 SWDV 110
-Project 1
-11/8/2025
+**Project 1
+*11/8/2025
 
 Added character class containing stats and moves as well as functions to pull those from each instance of the object.
 
-11/9/2025
+*11/9/2025
 Added allegiance to character class. 
 
 Added imports and packages so files can "speak" with one another.
@@ -83,8 +85,8 @@ Path B is still empty.(and has no trigger).
 //Comment - I underestimated the size of this assignment and underperformed. Get ahead on work next week me!
 
 ##########################################################################
-Free Time
-11/10/2025
+**Free Time
+* 11/10/2025
 
 added combat class.
 
@@ -102,7 +104,7 @@ Create a sorting system using the speed stat.
 
 New party sorting system DO THIS FIRST PROBABLY!!!!!
 
-11/11/2025
+* 11/11/2025
 
 Renamed character class to characterNode class to prevent overlap with reserved words.
 
@@ -122,6 +124,12 @@ Combat needs to read the speed of each of up to 8 nodes(first 4 player and first
 add a way to read hp total of each side. 
 
 give character a full heal method.
+
+* 11/12/2025
+
+Rewrote code for addAfter to a state so that it works so long as it is not the party head being moved.
+
+the * symbol is now used in README file to denote a new entry. this is so new entries can be found with ctrl+f more easily. (Major entries will now have 2 * symbols)
 ##########################################################################
 FUTURE PLANS
 
