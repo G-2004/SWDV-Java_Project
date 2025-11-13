@@ -246,7 +246,7 @@ public class Main {
         party[3] = party4;
 
         System.out.println("After explaining to " + partnerName + " what occurred the two set up camp");
-        party = checkParty(party);
+        //DELETE party = checkParty(party);
         for (int i=0; i < party.length; i++){
         System.out.print(party[i] + ", ");
         }
@@ -260,17 +260,17 @@ public class Main {
         if(selection == 1){
                 System.out.println("The two head to town. While at the local market they overhear a gruff voice arguing");
                 System.out.println("with a blacksmith.");
-                party = addParty(partyBernard, party);
-                System.out.println("gained party member: Bernard");
+                //DELETE party = addParty(partyBernard, party);
+                //System.out.println("gained party member: Bernard"); MOVE TO LATER ON
                 CharacterNode partnerB = new CharacterNode("Bernard", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
                 pathA currPathA = new pathA();
                 currPathA.playPathA(playerCharacter, partnerA, partnerB);
         }
         else if(selection == 2){
                 System.out.println("The two continue on the path until they run into a girl crouched down with a crossbow.");
-                party = addParty(partySyldeva, party, 0);
+                //DELETE party = addParty(partySyldeva, party, 0);
                 CharacterNode partnerB = new CharacterNode("Syldeva", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
-                System.out.println("gained party member: Syldeva");
+                //System.out.println("gained party member: Syldeva");
 
         }
 
@@ -444,7 +444,7 @@ public class Main {
         }
         return false;
     }
-    public static String[] checkParty(String[] party){
+    /*public static String[] checkParty(String[] party){
         //the c1 c2 variables stand for choice
         Scanner in = new Scanner(System.in);
 
@@ -506,6 +506,6 @@ public class Main {
         }
 
         return party;
-    }
+    }*/
 
 }

@@ -149,7 +149,7 @@ public class CharacterNode {
         public CharacterNode getNext() {
                 return this.nextNode;
         }
-        public void printParty(){
+        public void printParty(){//not used for ordering necessarily. may move.
                 System.out.println(this.name);
                 if (nextNode != null){
                         CharacterNode tmpNext = this.getNext();
@@ -179,5 +179,17 @@ public class CharacterNode {
         public CharacterNode getPrevNode(){
                 return this.prevNode;
         }
-        
+
+        public CharacterNode grabSlot(int slot){//grabs character at slot X in the linked list (so long as we start at head)
+                if(slot == 0){
+                        return this;
+                }
+                else if (nextNode != null) {
+                        return nextNode.grabSlot(slot - 1);
+                }
+                else{
+                        System.out.println("Character in a slot does not exist");
+                        return null;
+                }
+        }
 }

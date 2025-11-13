@@ -130,6 +130,12 @@ give character a full heal method.
 Rewrote code for addAfter to a state so that it works so long as it is not the party head being moved.
 
 the * symbol is now used in README file to denote a new entry. this is so new entries can be found with ctrl+f more easily. (Major entries will now have 2 * symbols)
+
+Added a method to character that allows other methods and classes to find what is in characterNode linked list slot X and return it.
+
+* 11/13/2025
+
+Combat can now gather all combatants and sort them by speed.
 ##########################################################################
 FUTURE PLANS
 
