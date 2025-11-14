@@ -14,7 +14,6 @@ public class pathA {
 
             CharacterNode playerHead = new CharacterNode();
             playerHead.setNext(playerChar);
-            playerChar.setLast(partnerA);//REMOVE THIS
             playerChar.setLast(partnerB);//REMOVE THIS
             Combat currCombat = new Combat();//REMOVE THIS
             currCombat.CombatSort(playerHead, playerHead);//REMOVE THIS

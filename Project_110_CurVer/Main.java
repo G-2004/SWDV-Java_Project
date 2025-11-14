@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 import Combat.CharacterNode;
+import Combat.partySort;
 import Story_paths.pathA;
 import Story_paths.pathB;
 
@@ -9,11 +10,6 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
         Random randGen = new Random();
-
-        // --- Collect basic character info ---
-
-        String[] party = {"Jim", "Jonas", "Perry", "Slapstick"}; //these are dummy names used for testing. this is being kept simply to define the party string array. the String[] can be moved to the other instance of party and this deleted
-        //party = checkParty(party);
 
         String treeType1 = "ERROR"; //I don't know why but giving these a default value before defining them properly later on is necessary for the code to run.
         String partnerWeapon = "ERROR";
@@ -35,10 +31,8 @@ public class Main {
         int age = in.nextInt();
         in.nextLine(); //This line is here to fix an issue where a nextLine following a next of any other variety ignores the nextLine
 
-        // An example integer you can reference later (feel free to rename/use differently)
         int gold = 12;
 
-        // --- Prologue paragraph (≥ 5 sentences using ≥ 5 variables) ---
         System.out.println();
         System.out.println("~ ~ ~ Adventure Prologue ~ ~ ~");
         System.out.println(name + " set out at dawn, " + proPossAdj + " pack light and hopes high.");
@@ -51,7 +45,6 @@ public class Main {
                 + " walked on without looking back.");
 
         int randomValue = randGen.nextInt(10)+1; //gives random values to select from later on to make each run more unique
-        // System.out.println(randomValue + " " + randomValue + " " + randomValue+ " " + randomValue); THIS LINE IS FOR TESTING. TESTS WERE SUCCESSFUL. DECIDING TO LEAVE THIS HERE AS NOTES OF MY LEARNING.
 
         if(randomValue <= 5 ){ //example of comment above. Random values being used to make each story more unique.
                 treeType1 = "pine";
@@ -159,6 +152,7 @@ public class Main {
         System.out.println("1: axe");
         System.out.println("2: broadsword");
         System.out.println("3: dagger");
+        
         int proWep = in.nextInt();
         //############################################
                 int hp = 1;
@@ -206,51 +200,15 @@ public class Main {
         }
 
         CharacterNode playerCharacter = new CharacterNode(name, maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);//currently unused. will rewrite combat code next time.
-        CharacterNode partnerA = new CharacterNode(partnerName, maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
+        CharacterNode partnerA = new CharacterNode(partnerName, 30, 30, 1, 12, 10, move1, move2, "null", "null", 1);
+        CharacterNode playerHead = new CharacterNode();
+        playerHead.setNext(playerCharacter);
+        playerHead.setLast(partnerA);
 
-        String moveDT = "Defensive Trap";
-        String moveSS = "Summon Sandstorm"; //I believe this is actually irrelevent in current code but my head is so fogged I'm not removing it yet
-        String moveHS = "Heavy Slam";
+        partySort pSort = new partySort();
+        pSort.sortParty(playerHead);
 
-
-
-        int enemyHp = 50;
-        int enemySpd = 7;
-        int enemyDmg = 4;
-        
-        String enemyName = monster1;
-        String p1Name = name;
-        
-
-        // End of project 2 updates
-        double[] playerStats = {hp, maxHp, spd, mp, dmgBonus}; //Holds stats in a way that allows each character to easily hold seperate stats instead of playerHp = 1 partnerHp = 1 and bloating with variables
-        double[] partnerStats = {30, 30, 12, 10, 1};
-
-        boolean victory = combat((int) playerStats[0], (int) playerStats[1], (int) playerStats[2], (int) playerStats[3], move1, move2, move3, move4, enemyHp, enemySpd, enemyDmg, enemyName, p1Name, playerStats[4]); //calls combat and loads player moves and player and enemy stats
-
-        String party1 = name;
-        String party2 = partnerName;
-        String party3 = "";
-        String party4 = "";
-        //String[] party = {party1, party2, party3, party4}; //decides active party members
-
-        //Below is a potential party list
-        //name : this is the player
-        //partnerName : this is your default partner
-        String partySyldeva = "Syldeva";
-        String partyBernard = "Bernard";
-        //end of party list
-        party[0] = party1;
-        party[1] = party2;
-        party[2] = party3;
-        party[3] = party4;
-
-        System.out.println("After explaining to " + partnerName + " what occurred the two set up camp");
-        //DELETE party = checkParty(party);
-        for (int i=0; i < party.length; i++){
-        System.out.print(party[i] + ", ");
-        }
-        System.out.println("");
+        System.out.println("After explaining to " + partnerName + " what occurred the two set up camp");//CREATE NEW CAMP FUNCTIONS
 
         System.out.println("After the two pick up camp they travel until they reach a fork in the road");
         System.out.println("They could either ");
@@ -260,18 +218,13 @@ public class Main {
         if(selection == 1){
                 System.out.println("The two head to town. While at the local market they overhear a gruff voice arguing");
                 System.out.println("with a blacksmith.");
-                //DELETE party = addParty(partyBernard, party);
-                //System.out.println("gained party member: Bernard"); MOVE TO LATER ON
-                CharacterNode partnerB = new CharacterNode("Bernard", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
+                CharacterNode partnerB = new CharacterNode("Bernard", maxHp, maxHp, dmgBonus, 24, mp, move1, move2, "null", "null", 1);
                 pathA currPathA = new pathA();
                 currPathA.playPathA(playerCharacter, partnerA, partnerB);
         }
         else if(selection == 2){
                 System.out.println("The two continue on the path until they run into a girl crouched down with a crossbow.");
-                //DELETE party = addParty(partySyldeva, party, 0);
                 CharacterNode partnerB = new CharacterNode("Syldeva", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
-                //System.out.println("gained party member: Syldeva");
-
         }
 
         /* party = checkParty(party);
@@ -287,7 +240,7 @@ public class Main {
     //#####################################################################################################################
     //#############################################Combat Code#############################################################
     //#####################################################################################################################
-
+    /*
     public static boolean combat(int hp, int maxHp, int spd, int mp, String move1, String move2, String move3, String move4, int enemyHp, int enemySpd, int enemyDmg, String enemyName, String p1Name, double dmgBonus){
 
         Scanner in = new Scanner(System.in);
@@ -444,6 +397,7 @@ public class Main {
         }
         return false;
     }
+        */
     /*public static String[] checkParty(String[] party){
         //the c1 c2 variables stand for choice
         Scanner in = new Scanner(System.in);

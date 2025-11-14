@@ -136,6 +136,9 @@ Added a method to character that allows other methods and classes to find what i
 * 11/13/2025
 
 Combat can now gather all combatants and sort them by speed.
+
+created partySort Class
+created a temporary sorting system. needs adjustment to be more user friendly.
 ##########################################################################
 FUTURE PLANS
 
