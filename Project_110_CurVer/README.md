@@ -139,12 +139,20 @@ Combat can now gather all combatants and sort them by speed.
 
 created partySort Class
 created a temporary sorting system. needs adjustment to be more user friendly.
+
+* 11/14/2025
+
+Gave CharacterNode a swap method.
+
+* 11/15/2025
+
+Removed commented out sort Party method.
+
+PET THE DOG PET THE DOG PET THE DOG
 ##########################################################################
 FUTURE PLANS
 
 Rewrite combat, add shops, add a convoy inventory, rewrite party ordering code.
-
-Add a dog. Let dog be pet.
 
 Give Syldeva and Bernard Stats
 

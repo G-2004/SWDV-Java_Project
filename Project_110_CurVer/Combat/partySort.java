@@ -25,8 +25,8 @@ public class partySort {
             CharacterNode moveMe = headNode.grabSlot(choice);
             System.out.println("Who to put them after?");
             choice = in.nextInt();
-            CharacterNode afterMe = headNode.grabSlot(choice);
-            moveMe.addAfter(afterMe, headNode);
+            CharacterNode withMe = headNode.grabSlot(choice);
+            moveMe.swapPosition(withMe, headNode);
         }
     }
 }

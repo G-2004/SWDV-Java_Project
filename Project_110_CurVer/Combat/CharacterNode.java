@@ -168,6 +168,43 @@ public class CharacterNode {
                 Temp = headNode.getNext();
                 Temp.setPrevNodes(headNode); //refresh the prevNode list just in case
         }
+        public void swapPosition(CharacterNode withMe, CharacterNode headNode){
+                CharacterNode Temp = headNode.getNext();
+                Temp.setPrevNodes(headNode); //starting from head node find each nodes previous node
+
+                CharacterNode myPrev = this.getPrevNode();
+                CharacterNode myNext = this.getNext();
+
+                CharacterNode theirPrev = withMe.getPrevNode();
+                CharacterNode theirNext = withMe.getNext();
+
+                if(theirNext == this){
+                        this.setNext(withMe);
+                        if(theirPrev != null){
+                                theirPrev.setNext(this);
+                        }
+                        withMe.setNext(myNext);
+                }
+                else if(myNext == withMe){
+                        withMe.setNext(this);
+                        if(myPrev != null){
+                                myPrev.setNext(withMe);
+                        }
+                        this.setNext(theirNext);
+                }
+                else{
+                        if(myPrev != null){
+                                myPrev.setNext(withMe);
+                        }
+                        withMe.setNext(myNext);
+                        if(theirPrev != null){
+                                theirPrev.setNext(this);
+                        }
+                        this.setNext(theirNext);
+                }
+                Temp = headNode.getNext();
+                Temp.setPrevNodes(headNode); //refresh the prevNode list just in case
+        }
         public void setPrevNodes(CharacterNode inputNode){
                 this.prevNode = inputNode;
                 if(this.getNext() != null){

@@ -200,6 +200,7 @@ public class Main {
         }
 
         CharacterNode playerCharacter = new CharacterNode(name, maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);//currently unused. will rewrite combat code next time.
+        //ADD COMBAT HERE
         CharacterNode partnerA = new CharacterNode(partnerName, 30, 30, 1, 12, 10, move1, move2, "null", "null", 1);
         CharacterNode playerHead = new CharacterNode();
         playerHead.setNext(playerCharacter);
@@ -227,14 +228,13 @@ public class Main {
                 CharacterNode partnerB = new CharacterNode("Syldeva", maxHp, maxHp, dmgBonus, spd, mp, move1, move2, "null", "null", 1);
         }
 
-        /* party = checkParty(party);
-        for (int i=0; i < party.length; i++){
-        System.out.print(party[i] + ", ");
+        System.out.println("You've completed the game");
+        System.out.println("A dog appears!");
+        while(true){
+                System.out.println("1: pet the dog");
+                int dummyVal = in.nextInt();
+                System.out.println("It looks happy.");
         }
-        System.out.println("");
-
-        System.out.println("End Final Project."); */
-        System.out.println("you should not see this until the end of the game.");
     }
 
     //#####################################################################################################################
@@ -398,68 +398,4 @@ public class Main {
         return false;
     }
         */
-    /*public static String[] checkParty(String[] party){
-        //the c1 c2 variables stand for choice
-        Scanner in = new Scanner(System.in);
-
-        int selection = 1;
-
-        while (selection == 1){
-                System.out.println("1: swap party");
-                System.out.println("2: leave?"); //we don't actually care what number the user inputs as long as it is indeed a number and is not the number 1
-
-                selection = in.nextInt();
-
-                if(selection == 1){
-                        for (int i=0; i < party.length; i++){
-                                System.out.print(party[i] + ", ");
-                        }
-                        System.out.println("Use numbers 1 - 4");
-                        System.out.println("swap slot:");
-                        int c1 = in.nextInt()-1; // the minus 1 allows users to input numbers that make more sense to the average person
-                        System.out.println("with slot:");
-                        int c2 = in.nextInt()-1;
-                        String temp = party[c1]; //stores value so we don't lose it
-                        party[c1] = party[c2];
-                        party[c2] = temp;
-                        if(c1 > 3 || c2 > 3 || c1 < 0 || c2 < 0){
-                                System.out.println("invalid input");
-                        }
-                        else{
-                                for (int i=0; i < party.length; i++){
-                                        System.out.print(party[i] + ", ");
-                                }
-                        }
-                        System.out.println("");
-
-                }
-                else{
-                        return party;
-                        //do nothing basically
-                }
-        }
-
-        return party;// just in case the user does something unexpected that somehow doesn't crash the program
-    }
-    public static String[] addParty(String newGuy, String[] party){
-        for (int i=0; i < party.length; i++){ //This does not currently account for if you already have 4 members.
-                if(party[i].equals("")){
-                        party[i] = newGuy;
-                        return party;
-                }
-        }
-
-        return party;// if party is full it will simply return the existing party
-    }
-    public static String[] addParty(String newGuy, String[] party, int slot){ // I could not think of a great use for an overloaded method
-        for (int i=slot; i < party.length; i++){
-                if(party[i].equals("")){
-                        party[i] = newGuy;
-                        return party;
-                }
-        }
-
-        return party;
-    }*/
-
 }
