@@ -18,6 +18,9 @@ public class partySort {
             System.out.println("1: yes");
             System.out.println("2: no");
             this.selection = in.nextInt();
+            if(this.selection != 1){
+                break;
+            }
             System.out.println("place who in what spot?");
             headNode.printParty();
             System.out.println("Who to move?");

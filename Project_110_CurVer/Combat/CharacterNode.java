@@ -78,10 +78,10 @@ public class CharacterNode {
         }
         public void printMoves(){
                 System.out.println("Moves:");
-                System.out.println(move1);
-                System.out.println(move2);
-                System.out.println(move3);
-                System.out.println(move4);
+                System.out.println("1: " + move1);
+                System.out.println("2: " + move2);
+                System.out.println("3: " + move3);
+                System.out.println("4: " + move4);
         }
         public void printAll(){
                 System.out.println("Stats:");
@@ -96,6 +96,10 @@ public class CharacterNode {
                 System.out.println(move2);
                 System.out.println(move3);
                 System.out.println(move4);
+        }
+        //set values---------------------------------------------------------------------------------------------------------
+        public void setHp(int value){
+                hp = value;
         }
         //return values------------------------------------------------------------------------------------------------------
         public String getName(){

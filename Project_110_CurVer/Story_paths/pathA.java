@@ -13,13 +13,15 @@ public class pathA {
             String name = playerChar.getName();
 
             CharacterNode playerHead = new CharacterNode();
+            CharacterNode monsterHead = new CharacterNode();
+            CharacterNode jimmy = new CharacterNode("jimmy", 1,1,1,1,1,"Attack","Attack","Attack","Attack", 2);
+            monsterHead.setNext(jimmy);
             playerHead.setNext(playerChar);
             playerChar.setLast(partnerB);//REMOVE THIS
             Combat currCombat = new Combat();//REMOVE THIS
-            currCombat.CombatSort(playerHead, playerHead);//REMOVE THIS
+            currCombat.startCombat(playerHead, monsterHead);//REMOVE THIS
+
             in.nextLine();
-            partnerB.addAfter(playerChar, playerHead);
-            currCombat.CombatSort(playerHead, playerHead);//REMOVE THIS
             
 
             System.out.println("blacksmith: " + nameC + "! How many times do I have to explain this to you!");

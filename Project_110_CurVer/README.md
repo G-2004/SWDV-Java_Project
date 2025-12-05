@@ -150,31 +150,29 @@ Removed commented out sort Party method.
 
 PET THE DOG PET THE DOG PET THE DOG
 ##########################################################################
+* 12/4/2025
+fixed issue with party sort that would make you do a sort even if you said no before closing.
+
+created moves.java and added a basic attack
+
+updated combat.java with new methods (fightTurn getCurrUnit getTeamHealths & printUnits) as well as some private variables to make these methods work.
+
+(sidenote this felt a lot bigger than it looks in this log to complete.)
+
+Ran a test battle. Appears to be working fine. only thing needed is to add enemy ai and more moves.
+
+FP:
+enemy ai.
+
+Multiturn moves like summon sandstorm should work.
+
+when listing all units in a combat as targets list allegience so players can more easily tell which targets are friend and foe.
+##########################################################################
 FUTURE PLANS
 
+create enemy combat ai.
+
 Rewrite combat, add shops, add a convoy inventory, rewrite party ordering code.
-
-Give Syldeva and Bernard Stats
-
-Continue story now with 2 whole paths
-
-Add variables to determine enemy damage 
-Ex:
-randomDamageEnemy = randGen.nextInt(4)+1; ----> randomDamageEnemy = randGen.nextInt(En1Max)+En1Min;
-
-Allow Enemies to select from multiple moves
-
-Allow for hosting of multiple party members and enemies each combat.
-
-Add locked moves and ability to unlock certain moves
-
-Add Camp to allow player to customize moves
-Add Party member switch out capability at Camp
-Allow Sleep/heal at Camp
-
-Find a way to track Hp at end of combat
-
-Find a way to return both victory Status, Hp, and Mana values post-combat
 
 Add ability for enemies and players to miss attacks?
 
