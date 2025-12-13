@@ -181,8 +181,11 @@ public class CharacterNode {
 
                 CharacterNode theirPrev = withMe.getPrevNode();
                 CharacterNode theirNext = withMe.getNext();
-
-                if(theirNext == this){
+                
+                if(this == withMe){
+                        System.out.println("A unit can not swap with itself");
+                }
+                else if(theirNext == this){
                         this.setNext(withMe);
                         if(theirPrev != null){
                                 theirPrev.setNext(this);

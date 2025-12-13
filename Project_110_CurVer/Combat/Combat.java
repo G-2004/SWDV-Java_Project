@@ -12,7 +12,7 @@ public class Combat {
     private TurnState state;
     private String selectedMove;
     
-    private int i = 0;
+    private int i = 0; //this is mostly for determining the active unit in the fighters array.
     private int turnNumber = 1;
     private moves moves = new moves();
     private CharacterNode[] fighters;
@@ -22,8 +22,8 @@ public class Combat {
     }
 
     public void startCombat(CharacterNode playerLeader, CharacterNode monsterLeader){
-        CharacterNode[] unitArray = CombatSort(playerLeader, monsterLeader);
-        fightTurn(unitArray);
+        CharacterNode[] unitArray = CombatSort(playerLeader, monsterLeader); //Sorts fighters into a character node array based on speed
+        fightTurn(unitArray); // sets up the window for combat
     }
 
     enum TurnState {
@@ -31,41 +31,43 @@ public class Combat {
         PLAYER_CHOOSE_TARGET,
         AI_TURN,
         CHECK_END
+        //Add one called display stats
     }
 
     private void startNextTurn(CombatGui gameWindow, CharacterNode[] fighters) {
         getTeamHealths(fighters);
 
-        if (playerTeamHP <= 0 || enemyTeamHP <= 0) {
+        if (playerTeamHP <= 0 || enemyTeamHP <= 0) {//checks if one side has won
             endCombat(gameWindow);
             return;
         }
 
         currUnit = fighters[i];
 
-        if (currUnit.getHp() <= 0) {
+        if (currUnit.getHp() <= 0) {//skip if unit dead
             advanceIndex();
             startNextTurn(gameWindow, fighters);
             return;
         }
 
-        if (currUnit.getAllegiance() == 1) {
+        if (currUnit.getAllegiance() == 1) {//if player start player turn if ai go through ai processes
             playerTurn(gameWindow, fighters);
-        } else {
+        } 
+        else {
             aiTurn(gameWindow, fighters);
         }
     }
 
     private void playerTurn(CombatGui gameWindow, CharacterNode[] fighters) {
-        state = TurnState.PLAYER_CHOOSE_MOVE;
-        gameWindow.clearInputPanel();
+        state = TurnState.PLAYER_CHOOSE_MOVE; //updates state
+        gameWindow.clearInputPanel();//reset the window accordingly
 
-        gameWindow.setMoveCallback(move -> {
+        gameWindow.setMoveCallback(move -> { //give the window a reference of what to do when an option is selected //This is not where anything actually happens
             selectedMove = move;
             chooseTarget(gameWindow, fighters);
         });
 
-        gameWindow.moveSelectorMode(fighters, currUnit);
+        gameWindow.moveSelectorMode(fighters, currUnit); //update screen to select a move menu for current unit
     }
 
     private void chooseTarget(CombatGui gameWindow, CharacterNode[] fighters) {
@@ -96,7 +98,7 @@ public class Combat {
         }
     }
 
-    private void aiTurn(CombatGui gameWindow, CharacterNode[] fighters) {
+    private void aiTurn(CombatGui gameWindow, CharacterNode[] fighters) {//currently just advances to the next turn
         // pick move + target
         // executeMove(...)
         advanceIndex();
@@ -117,10 +119,10 @@ public class Combat {
 
         this.fighters = fighters;
 
-        CombatGui gameWindow = new CombatGui(fighters); //creates the gui
+        CombatGui gameWindow = new CombatGui(fighters); //creates the gui window
         gameWindow.setVisible(true);
 
-        startNextTurn(gameWindow, fighters);
+        startNextTurn(gameWindow, fighters);//starts the first turn
     }
 
     public CharacterNode findCurrUnit(){

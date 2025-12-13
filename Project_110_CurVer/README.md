@@ -176,12 +176,21 @@ Combat is now state based.
 
 Combat gui exists and provides a visual way to select moves and targets.
 
+backup files present
+
 FP:
 Annotate code. I am drowning in confusion.
 
 enemy ai
 
 finish/make story
+
+*12/13/2025
+Fixed swap so a unit can not swap with itself.
+
+improved comments in combat and combatGui
+
+backup files removed
 ##########################################################################
 FUTURE PLANS
 

@@ -75,12 +75,12 @@ public class CombatGui extends JFrame {
     inputPanel.repaint();
     }
 
-    private JButton createMoveButton(String text){
+    private JButton createMoveButton(String text){//create a button for move 'text'
         JButton button = new JButton(text);
 
         button.addActionListener(e -> {
-            if (moveCallback != null) {
-                moveCallback.onMoveSelected(text);
+            if (moveCallback != null) {//if there is not already a move callback set and we have been pressed
+                moveCallback.onMoveSelected(text);//then ???
             }
         });
 
@@ -124,7 +124,7 @@ public class CombatGui extends JFrame {
         this.targetCallback = cb;
     }
 
-    public void setMoveCallback(MoveCallback cb) {
+    public void setMoveCallback(MoveCallback cb) {//saves a referece of what to do when button pressed
         this.moveCallback = cb;
     }
 }

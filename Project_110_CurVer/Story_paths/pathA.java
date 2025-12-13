@@ -18,6 +18,7 @@ public class pathA {
             monsterHead.setNext(jimmy);
             playerHead.setNext(playerChar);
             playerChar.setLast(partnerB);//REMOVE THIS
+            
             Combat currCombat = new Combat();//REMOVE THIS
             currCombat.startCombat(playerHead, monsterHead);//REMOVE THIS
 
