@@ -150,6 +150,7 @@ Removed commented out sort Party method.
 
 PET THE DOG PET THE DOG PET THE DOG
 ##########################################################################
+**PROJECT 2
 * 12/4/2025
 fixed issue with party sort that would make you do a sort even if you said no before closing.
 
@@ -167,6 +168,20 @@ enemy ai.
 Multiturn moves like summon sandstorm should work.
 
 when listing all units in a combat as targets list allegience so players can more easily tell which targets are friend and foe.
+##########################################################################
+**FINAL
+*12/12/2025
+
+Combat is now state based.
+
+Combat gui exists and provides a visual way to select moves and targets.
+
+FP:
+Annotate code. I am drowning in confusion.
+
+enemy ai
+
+finish/make story
 ##########################################################################
 FUTURE PLANS
 

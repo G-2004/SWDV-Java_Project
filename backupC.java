@@ -11,11 +11,8 @@ public class Combat {
     private int enemyTeamHP;
     private TurnState state;
     private String selectedMove;
-    
-    private int i = 0;
-    private int turnNumber = 1;
-    private moves moves = new moves();
-    private CharacterNode[] fighters;
+
+    Scanner in = new Scanner(System.in);
 
     public CharacterNode getCurrUnit(){
         return currUnit;
@@ -37,7 +34,7 @@ public class Combat {
         getTeamHealths(fighters);
 
         if (playerTeamHP <= 0 || enemyTeamHP <= 0) {
-            endCombat(gameWindow);
+            endCombat();
             return;
         }
 
@@ -56,71 +53,86 @@ public class Combat {
         }
     }
 
-    private void playerTurn(CombatGui gameWindow, CharacterNode[] fighters) {
-        state = TurnState.PLAYER_CHOOSE_MOVE;
-        gameWindow.clearInputPanel();
-
-        gameWindow.setMoveCallback(move -> {
-            selectedMove = move;
-            chooseTarget(gameWindow, fighters);
-        });
-
-        gameWindow.moveSelectorMode(fighters, currUnit);
-    }
-
-    private void chooseTarget(CombatGui gameWindow, CharacterNode[] fighters) {
-        state = TurnState.PLAYER_CHOOSE_TARGET;
-        gameWindow.clearInputPanel();
-
-        gameWindow.setTargetCallback(index -> {
-            executeMove(gameWindow, fighters[index]);
-            advanceIndex();
-            startNextTurn(gameWindow, fighters);
-        });
-
-        gameWindow.targetSelectorMode(fighters);
-    }
-
-    private void executeMove(CombatGui gameWindow, CharacterNode target) {
-        moves.findUsedMove(selectedMove, target, currUnit);
-        gameWindow.clearInputPanel();
-    }
-
-    private void advanceIndex() {
-        if (i == fighters.length - 1) {
-            i = 0;
-            turnNumber++;
-            moves.checkActiveMTs();
-        } else {
-            i++;
-        }
-    }
-
-    private void aiTurn(CombatGui gameWindow, CharacterNode[] fighters) {
-        // pick move + target
-        // executeMove(...)
-        advanceIndex();
-        startNextTurn(gameWindow, fighters);
-    }
-
-    private void endCombat(CombatGui gameWindow) {
-        if (enemyTeamHP <= 0) {
-            System.out.println("You won!");
-        } else {
-            System.out.println("You lost!");
-        }
-
-        gameWindow.dispose();
-    }
-
     public void fightTurn(CharacterNode[] fighters){
-
-        this.fighters = fighters;
+        int turnNumber = 1;
+        boolean fightActive = true;
+        int i = 0;
+        currUnit = fighters[i];
+        moves moves = new moves();
 
         CombatGui gameWindow = new CombatGui(fighters); //creates the gui
         gameWindow.setVisible(true);
 
-        startNextTurn(gameWindow, fighters);
+        while(fightActive){
+            System.out.println("Round: " + turnNumber);
+            getTeamHealths(fighters);
+            currUnit = fighters[i];
+
+            
+
+            System.out.println( currUnit.getName() + "'s turn");
+
+            if(playerTeamHP <= 0 || enemyTeamHP <= 0){
+                fightActive = false;
+            }
+            else if(currUnit.getHp() <= 0){
+                //currUnit = fighters[i+1];
+            }
+            else{
+                if(currUnit.getAllegiance() == 1){//allow player input
+                    gameWindow.moveSelectorMode(fighters);
+                    System.out.println("Pick a move:");
+                    currUnit.printMoves();
+                    int moveSelection = in.nextInt();
+                    String moveName = currUnit.getMove(moveSelection);
+                    System.out.println("Pick a target:");
+                    printUnits(fighters);
+                    gameWindow.clearInputPanel();
+                    gameWindow.setTargetCallback(index -> {
+                        moves.findUsedMove(moveName, fighters[index], currUnit);
+                        gameWindow.clearInputPanel();
+                    });
+                    gameWindow.targetSelectorMode(fighters);
+                    
+                }
+
+                else{//use ai input
+                    
+
+                    //to use ai select a move 1-4 at random.
+                    //then select a random target from playerNodes.
+                    //if said target does not exist or has 0 hp try again. after a certain number of attempts we should automatically check 1 2 3 4 (0 1 2 3) in order until we find one to hit.
+                }
+
+                //make current unit attack
+            }
+
+            if(currUnit == fighters[fighters.length-1]){//after the attack phase check all active multi-turn effects.
+                moves.checkActiveMTs();
+            }
+
+            if(i == fighters.length-1){
+                turnNumber = turnNumber + 1;
+                i = 0;
+            }
+            else{
+                i = i+1;
+            }
+        }
+
+        //after fightActive = false
+        //decide if game over or not
+        getTeamHealths(fighters);
+        if(enemyTeamHP <= 0){
+            //continue
+            System.out.println("You won the battle!");
+        }
+        else{
+            while(true){
+                System.out.println("You Lost. Please restart the program.");
+                String dummy = in.nextLine();
+            }
+        }
     }
 
     public CharacterNode findCurrUnit(){

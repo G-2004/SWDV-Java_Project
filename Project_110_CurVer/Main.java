@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 import Combat.CharacterNode;
 import Combat.partySort;
+import Combat.CombatGui;
 import Story_paths.pathA;
 import Story_paths.pathB;
 
@@ -33,7 +34,7 @@ public class Main {
 
         int gold = 12;
 
-        System.out.println();
+        System.out.println("");
         System.out.println("~ ~ ~ Adventure Prologue ~ ~ ~");
         System.out.println(name + " set out at dawn, " + proPossAdj + " pack light and hopes high.");
         System.out.println("At only " + age + " years old, " + proSubj + " already carries stories that most would never dare to tell.");
@@ -237,165 +238,4 @@ public class Main {
         }
     }
 
-    //#####################################################################################################################
-    //#############################################Combat Code#############################################################
-    //#####################################################################################################################
-    /*
-    public static boolean combat(int hp, int maxHp, int spd, int mp, String move1, String move2, String move3, String move4, int enemyHp, int enemySpd, int enemyDmg, String enemyName, String p1Name, double dmgBonus){
-
-        Scanner in = new Scanner(System.in);
-        Random randGen = new Random();
-        
-        int randomHeal = randGen.nextInt(6)+3; // Min 3 Max 8
-        int randomDamage = randGen.nextInt(8)+1;
-        int randomDamageEnemy = randGen.nextInt(4)+1;
-        int randomSandstormDmg = randGen.nextInt(4)+1;
-
-        int roundNum = 1;
-        int damageTotal = 1;
-        int sandstormTimer = 0;
-
-        boolean sandstormActive = false;
-        boolean trapActive = false;
-
-        //########### Move list ########### A list full of all move names that could be called
-        String moveAttack = "Attack";
-        String moveDefensiveTrap = "Defensive Trap";
-        String moveSummonSandstorm = "Summon Sandstorm";
-        String moveHeavySlam = "Heavy Slam";
-        String moveHeal = "Heal";
-        //######### End Move list #########
-        String[] moves = {move1, move2, move3, move4}; //Loads moves into the 4 slots
-
-
-        while ( hp > 0 && enemyHp > 0) {
-                System.out.println("Round " + roundNum + "!");
-                System.out.println("#################");
-                System.out.println("hp       : " + hp);
-                System.out.println("speed    : " + spd);
-                System.out.println("mana pool: " + mp);
-                System.out.println("#################");//these lines provide a visual barrier between your stats and your opponents
-                System.out.println("Opponent hp: " + enemyHp);
-                System.out.println("#################");
-                System.out.println("Select Move:");
-                for (int i = 0; i < moves.length; i++) {
-                        System.out.println((i + 1) + ": " + moves[i]);
-                }
-                
-                //Below handles most randomizations
-                randomHeal = randGen.nextInt(6)+3;
-                randomDamage = randGen.nextInt(8)+1;
-                randomDamageEnemy = randGen.nextInt(4)+1;
-                //Below Takes player input to determine move choice
-                int p1Move = in.nextInt();
-                String chosenMove = moves[p1Move - 1]; //converts input to string
-                //########################################################################################################################
-                //Below Determines Which move has been chosen and which code to execute based on if chosenMove equals the move (moves displayed in move list)
-                if (chosenMove.equals(moveHeavySlam)) {
-                        damageTotal = (int)(randomDamage * dmgBonus + 8);
-                        enemyHp -= damageTotal;
-                        System.out.println(p1Name + " used Heavy Slam and dealt " + damageTotal + " damage!");
-                }
-                else if (chosenMove.equals(moveHeal)) {
-                        hp += randomHeal;
-                        if (hp > maxHp) {
-                                hp = maxHp;
-                        } 
-                        System.out.println(p1Name + " used Heal and recovered " + randomHeal + " HP!");
-                }
-                else if (chosenMove.equals(moveDefensiveTrap)) {
-                        if (trapActive) {
-                                System.out.println("... But Defensive Trap is already active.");
-                        } else if (mp >= 2) {
-                                mp -= 2;
-                                trapActive = true;
-                                System.out.println(p1Name + " set a Defensive Trap!");
-                        } else {
-                                System.out.println("... But they lack the needed mana.");
-                        }
-                }
-                else if (chosenMove.equals(moveSummonSandstorm)) {
-                        if (sandstormActive) {
-                                System.out.println("... But Sandstorm is already active.");
-                        } else if (mp >= 3) {
-                                mp -= 3;
-                                sandstormActive = true;
-                                sandstormTimer = 4;
-                                System.out.println(p1Name + " summoned a raging Sandstorm!");
-                        } else {
-                                System.out.println("... But they lack the needed mana.");
-                        }
-                }
-                else if (chosenMove.equals(moveAttack)) {
-                        enemyHp = (int)(enemyHp - ((randomDamage * dmgBonus)));
-                        damageTotal = (int)(randomDamage * dmgBonus);
-                        System.out.println(p1Name + " dealt " + damageTotal + " damage!");
-                }
-                else {
-                        System.out.println("Unknown action!");
-                }
-//########################################################################################################################
-                //Below checks if sandstorm is active and deals damage accordingly
-                randomSandstormDmg = randGen.nextInt(4)+1;
-
-                if (sandstormActive == true && !(sandstormTimer < 1)){
-                        sandstormTimer = sandstormTimer -1;
-                        enemyHp = enemyHp - randomSandstormDmg;
-                        System.out.println("The sandstorm battered green " + enemyName + " for " + randomSandstormDmg + " damage.");
-                }
-                else if ((sandstormActive==true && sandstormTimer < 1)) {
-                        sandstormTimer = 0;
-                        sandstormActive = false;
-                        System.out.println("The sandstorm petered out...");
-                }
-                else{
-                        //null
-                }
-                //logic that dictates if you won/lost this round below this comment
-                if (enemyHp <= 0){
-                        System.out.println(p1Name + " is victorious!");
-                        return true;
-                }
-                else if (hp <= 0){
-                        while (true){ //An intentional infinate loop requiring a program restart to play any more
-                                System.out.println("I lost..?");
-                                String dummy = in.nextLine(); 
-                        }
-                }
-                else{
-                        for (int i =0; i < 1; ++i) {
-                                roundNum++;
-                        }
-                }
-                //Below both checks if the trap is set off and deals damage to the player.
-                hp = hp - randomDamageEnemy;
-                damageTotal = randomDamageEnemy;
-                System.out.println("Green " + enemyName + " slammed into " + p1Name + " for " + damageTotal + " damage.");
-                if (trapActive == true && damageTotal > 0) { //this will always activate but I'm just playing with ideas. Maybe I can let it miss later but I'm lazy rn.
-                        enemyHp = enemyHp -10;
-                        trapActive = false;
-                        System.out.println("but also got caught in " + p1Name + "'s trap! dealing 10 damage!");
-                }
-
-                //logic that dictates if you won/lost this round below this comment
-                if (enemyHp <= 0){
-                        System.out.println(p1Name + " is victorious!");
-                        return true;
-                }
-                else if (hp <= 0){
-                        while (true){ //An intentional infinate loop requiring a program restart to play any more
-                                System.out.println("I lost..?");
-                                String dummy = in.nextLine(); 
-                        }
-                }
-                else{
-                        for (int i =0; i < 1; ++i) {
-                                roundNum++;
-                        }
-                }
-
-        }
-        return false;
-    }
-        */
 }
