@@ -21,10 +21,8 @@ public class CombatGui extends JFrame {
         add(inputPanel, BorderLayout.CENTER);
     }
 
-    public void targetSelectorMode(CharacterNode[] fighters){
-        // User input area
-        inputPanel.setLayout(new GridBagLayout());//this creates an empty grid
-        // GridBagConstraints coords = new GridBagConstraints(); Used to be here; now it's a private
+    public void targetSelectorMode(CharacterNode[] fighters){//gathers combatants and puts them in gui for selection
+        inputPanel.setLayout(new GridBagLayout());
         coords.insets = new Insets(5,5,5,5);//this sets spacing
 
         //Headers & Initial fields.
@@ -57,7 +55,7 @@ public class CombatGui extends JFrame {
         inputPanel.repaint();
     }
 
-    public void moveSelectorMode(CharacterNode[] fighters, CharacterNode currUnit){
+    public void moveSelectorMode(CharacterNode[] fighters, CharacterNode currUnit){//makes buttons for move selection
         inputPanel.setLayout(new GridBagLayout());
         for(int i=0; i < 4; i++){
         coords.gridx = i;
@@ -71,10 +69,10 @@ public class CombatGui extends JFrame {
         inputPanel.repaint();
     }
 
-    public void clearInputPanel() {
-    inputPanel.removeAll();   // remove all buttons/components
-    inputPanel.revalidate();  // tell Swing the layout changed
-    inputPanel.repaint();     // redraw the panel
+    public void clearInputPanel() {//remove existing window assets
+    inputPanel.removeAll();
+    inputPanel.revalidate();
+    inputPanel.repaint();
     }
 
     private JButton createMoveButton(String text){
